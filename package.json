@@ -1,0 +1,54 @@
+{
+  "name": "reduxt",
+  "version": "1.0.0",
+  "description": "Tools for redux",
+  "main": "dist/lib.js",
+  "module": "dist/lib.es.js",
+  "type": "dist/index.d.ts",
+  "author": "Roberto Ríos <roberto.rios.perea@outlook.com>",
+  "license": "MIT",
+  "keywords": [
+    "redux",
+    "reduxt",
+    "tools",
+    "redux tools",
+    "redux-toolbox",
+    "actions",
+    "reducer",
+    "reducers",
+    "generators"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rriosper/reduxt"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && rollup -c",
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
+    "lint": "tslint --project tsconfig.json --exclude node_modules",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --passWithNoTests --watch",
+    "coverage": "jest --passWithNoTests --coverage"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "redux": "^4.0.4",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.0",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm lint --fix",
+      "pre-push": "npm test"
+    }
+  }
+}
