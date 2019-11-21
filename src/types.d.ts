@@ -14,9 +14,12 @@ export interface ActionsTypes {
 export type ActionPrefix = string | null;
 export type ActionsOutput = [ActionsTypes, ActionsCreator];
 export type Modifier = (props?: any) => any;
-export type ActionData = [string, Modifier] | string;
+export type ActionData = [ActionType, Modifier] | string;
 export type InitialState = any;
 export type State = any;
-export type ReducerFunction = (state: State, payload: Payload) => State;
+export type ReducerFunction = (props: {
+  state: State;
+  payload: Payload;
+}) => State;
 export type Reducer = [ActionType, ReducerFunction];
 export type Reducers = Array<Reducer>;
