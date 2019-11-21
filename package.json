@@ -29,7 +29,8 @@
     "lint": "tslint --project tsconfig.json --exclude node_modules",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --passWithNoTests --watch",
-    "coverage": "jest --passWithNoTests --coverage"
+    "coverage": "jest --passWithNoTests --coverage",
+    "validate": "npm run lint && npm run test"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
