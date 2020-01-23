@@ -8,7 +8,7 @@ _Tools to ease generate actions and reducers for redux_
 
 - How to use
 
-___
+---
 
 ## How to install
 
@@ -21,33 +21,31 @@ or
 ```
 yarn add reduxt
 ```
-___
+
+---
+
 ## How to use
 
 - ### Generate actions
 
 #### Without prefix
+
 ```javascript
-    // generateActions(prefix, ...actions);
-    import { generateActions } from "reduxt";
+// generateActions(prefix, ...actions);
+import { generateActions } from "reduxt";
 
-    // actionsAT = Action types
-    // actionsAC = Actions to dispatch
-    const [actionsAT, actionsAC] = generateActions(
-    null, 
-    "action 1",
-    "action_2", 
-    [
-        "action 3",
-        value => !value
-    ]
-    );
+// actionsAT = Action types
+// actionsAC = Actions to dispatch
+const [actionsAT, actionsAC] = generateActions(null, "action 1", "action_2", [
+  "action 3",
+  value => !value
+]);
 
-    // actionsAT.action1 === ACTION_1
-    // actionsAT.action2 === ACTION_2
-    // actionsAT.action3 === ACTION_3
+// actionsAT.action1 === ACTION_1
+// actionsAT.action2 === ACTION_2
+// actionsAT.action3 === ACTION_3
 
-    /*
+/*
     actionsAC.action1() === {
         type    : 'ACTION_1',
         payload : undefined,
@@ -62,25 +60,22 @@ ___
         type    : 'ACTION_3',
         payload : true,
     }
-    */ 
+    */
 ```
 
 #### With prefix
+
 ```javascript
-    import { generateActions } from "reduxt";
+import { generateActions } from "reduxt";
 
-    const [actionsAT, actionsAC] = generateActions(
-    'custom prefix', 
-    "action 1",
-    "action_2", 
-    [
-        "action 3",
-        value => !value
-    ]
-    );
+const [actionsAT, actionsAC] = generateActions(
+  "custom prefix",
+  "action 1",
+  "action_2",
+  ["action 3", value => !value]
+);
 
-
-    /*
+/*
      actionsAT.action1 === CUSTOM_PREFIX/ACTION_1
      actionsAT.action2 === CUSTOM_PREFIX/ACTION_2
      actionsAT.action3 === CUSTOM_PREFIX/ACTION_3
@@ -99,34 +94,40 @@ ___
             type    : 'CUSTOM_PREFIX/ACTION_3',
             payload : true,
         }
-    */ 
+    */
 ```
-
 
 - ### Generate reducer
 
 ```javascript
 // generateReducer(initialState, ...reducers);
-import { generateReducer } from 'reduxt';
+import { generateReducer } from "reduxt";
 
 const initialState = {
-    test : true,
-    foo  : 'foo'
-}
+  test: true,
+  foo: "foo"
+};
 
-const changeTestValueReducer = ({ state, payload }) => ({...state, test : payload});
+const changeTestValueReducer = (state, { payload }) => ({
+  ...state,
+  test: payload
+});
 
-const toggleTestValueReducer = ({ state, payload }) => ({ ...state, test: !state.test});
+const toggleTestValueReducer = (state, { payload }) => ({
+  ...state,
+  test: !state.test
+});
 
-const changeFooValue = ({ state, payload}) => ({ ...state, foo : payload});
+const changeFooValue = (state, {payload }) => ({ ...state, foo: payload });
 
-const reducer = generateReducer(initialState,
-    ['CHANGE_TEST_VALUE', changeTestValueReducer],
-    ['TOGGLE_TEST_VALUE', changeTestValueReducer],
-    ['CHANGE_FOO_VALUE', changeFooValue],
+const reducer = generateReducer(
+  initialState,
+  ["CHANGE_TEST_VALUE", changeTestValueReducer],
+  ["TOGGLE_TEST_VALUE", changeTestValueReducer],
+  ["CHANGE_FOO_VALUE", changeFooValue]
 );
 
-I/*
+I; /*
     dispatch(actionsAC.changeTestValue(false));
     state = {
         test : false,
@@ -145,5 +146,4 @@ I/*
         foo  : 'Modified',
     }
 */
-
 ```

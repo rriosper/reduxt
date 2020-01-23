@@ -17,9 +17,11 @@ export type Modifier = (props?: any) => any;
 export type ActionData = [ActionType, Modifier] | string;
 export type InitialState = any;
 export type State = any;
-export type ReducerFunction = (props: {
-  state: State;
-  payload: Payload;
-}) => State;
+export type ReducerFunction = (
+  state: State,
+  props: {
+    payload: Payload;
+  }
+) => State;
 export type Reducer = [ActionType, ReducerFunction];
 export type Reducers = Array<Reducer>;

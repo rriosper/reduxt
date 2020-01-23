@@ -15,13 +15,10 @@ describe("Generate reducers", () => {
   };
   const reducer = generateReducer(
     initialState,
-    [
-      actionsAT.inverseTestValue,
-      ({ state }) => ({ ...state, test: !state.test })
-    ],
+    [actionsAT.inverseTestValue, state => ({ ...state, test: !state.test })],
     [
       actionsAT.changeFooText,
-      ({ state, payload }) => ({ ...state, foo: payload })
+      (state, { payload }) => ({ ...state, foo: payload })
     ]
   );
 
