@@ -2,8 +2,11 @@
 
 _Tools to ease generate actions and reducers for redux_
 
-[![Last Commit][last-commit-badge]][last-commit]
-[![npm package][npm-badge]][npm]
+![npm bundle size](https://img.shields.io/bundlephobia/min/reduxt)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/reduxt)
+![npm](https://img.shields.io/npm/v/reduxt)
+![NPM](https://img.shields.io/npm/l/reduxt)
+![GitHub last commit](https://img.shields.io/github/last-commit/rriosper/reduxt)
 
 ## Summary
 
