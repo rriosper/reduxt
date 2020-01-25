@@ -118,14 +118,13 @@ const toggleTestValueReducer = (state, { payload }) => ({
   test: !state.test
 });
 
-const changeFooValue = (state, {payload }) => ({ ...state, foo: payload });
+const changeFooValue = (state, { payload }) => ({ ...state, foo: payload });
 
-const reducer = generateReducer(
-  initialState,
-  ["CHANGE_TEST_VALUE", changeTestValueReducer],
-  ["TOGGLE_TEST_VALUE", changeTestValueReducer],
-  ["CHANGE_FOO_VALUE", changeFooValue]
-);
+const reducer = generateReducer(initialState, {
+  CHANGE_TEST_VALUE: changeTestValueReducer,
+  TOGGLE_TEST_VALUE: changeTestValueReducer,
+  CHANGE_FOO_VALUE: changeFooValue
+});
 
 I; /*
     dispatch(actionsAC.changeTestValue(false));
