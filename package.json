@@ -30,7 +30,8 @@
     "test": "jest --passWithNoTests",
     "test:watch": "jest --passWithNoTests --watch",
     "coverage": "jest --passWithNoTests --coverage",
-    "validate": "npm run lint && npm run test"
+    "validate": "npm run lint && npm run test",
+    "deploy": "npm publish"
   },
   "devDependencies": {
     "@types/jest": "^24.9.1",
