@@ -2,6 +2,9 @@
 
 _Tools to ease generate actions and reducers for redux_
 
+[![Last Commit][last-commit-badge]][last-commit]
+[![npm package][npm-badge]][npm]
+
 ## Summary
 
 - How to install
