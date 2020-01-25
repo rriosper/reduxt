@@ -17,11 +17,15 @@ export type Modifier = (props?: any) => any;
 export type ActionData = [ActionType, Modifier] | string;
 export type InitialState = any;
 export type State = any;
+
+export type Reducer = [ActionType, ReducerFunction];
 export type ReducerFunction = (
   state: State,
   props: {
     payload: Payload;
   }
 ) => State;
-export type Reducer = [ActionType, ReducerFunction];
-export type Reducers = Array<Reducer>;
+
+export interface Reducers {
+  [type: string]: ReducerFunction;
+}

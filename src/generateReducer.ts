@@ -1,16 +1,27 @@
-import { Action, InitialState, Reducer, Reducers, State } from "./types";
+import {
+  Action,
+  ActionType,
+  InitialState,
+  ReducerFunction,
+  Reducers,
+  State,
+} from "./types";
 
 const generateReducer = (
   initialState: InitialState,
-  ...reducers: Reducers
+  reducers: Reducers,
 ): State => {
   return (state: State, action: Action) => {
-    const currentReducer: Reducer | undefined = reducers.find(
-      (reducer: Reducer) => reducer[0] === action.type,
-    );
-    return currentReducer
-      ? currentReducer[1](state, { payload: action.payload })
-      : initialState;
+    const currentKeyReducer: ActionType | undefined = Object.keys(
+      reducers,
+    ).find((type) => type === action.type);
+
+    if (currentKeyReducer) {
+      const currentReducer: ReducerFunction = reducers[currentKeyReducer];
+      return currentReducer(state, { payload: action.payload });
+    }
+
+    return initialState;
   };
 };
 

@@ -7,7 +7,6 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
