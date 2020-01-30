@@ -1,6 +1,6 @@
 {
   "name": "reduxt",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Tools for redux",
   "main": "dist/lib.js",
   "module": "dist/lib.es.js",
