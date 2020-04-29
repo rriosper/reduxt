@@ -1,0 +1,9 @@
+coverage
+node_modules
+src
+.env
+.gitignore
+jest.config.js
+rollup.config.js
+tsconfig.json
+tslint.json
