@@ -10,68 +10,81 @@ _Tools to ease generate actions and reducers for redux_
 
 ## Summary
 
-- How to install
+- [Installation](#installation)
 
-- How to use
+- [Build](#build)
+
+- [Use](#use)
 
 ---
 
-## How to install
+## Installation
 
-```
-npm i reduxt --save
-```
+```js
+// NPM
+npm install reduxt
 
-or
-
-```
+// Yarn
 yarn add reduxt
 ```
 
 ---
 
-## How to use
+## Build
 
-- ### Generate actions
+```js
+// NPM
+npm run build
 
-#### Without prefix
+// Yarn
+yarn build
+```
 
-```javascript
-// generateActions(prefix, ...actions);
+## **Use**
+
+
+### **Generate actions**
+
+#### _Without prefix_
+
+```js
+generateActions(prefix, ...actions);
+```
+
+```js
 import { generateActions } from "reduxt";
 
 // actionsAT = Action types
 // actionsAC = Actions to dispatch
+
 const [actionsAT, actionsAC] = generateActions(null, "action 1", "action_2", [
   "action 3",
   value => !value
 ]);
 
-// actionsAT.action1 === ACTION_1
-// actionsAT.action2 === ACTION_2
-// actionsAT.action3 === ACTION_3
+actionsAT.action1 --> ACTION_1
+actionsAT.action2 --> ACTION_2
+actionsAT.action3 --> ACTION_3
 
-/*
-    actionsAC.action1() === {
-        type    : 'ACTION_1',
-        payload : undefined,
-    }
+actionsAC.action1() --> {
+    type    : 'ACTION_1',
+    payload : undefined,
+}
 
-    actionsAC.action2('Hello!') === {
-        type    : 'ACTION_2',
-        payload : 'Hello!',
-    }
+actionsAC.action2('Hello!') --> {
+    type    : 'ACTION_2',
+    payload : 'Hello!',
+}
 
-    actionsAC.action3(false) === {
-        type    : 'ACTION_3',
-        payload : true,
-    }
-    */
+actionsAC.action3(false) --> {
+    type    : 'ACTION_3',
+    payload : true,
+}
 ```
 
-#### With prefix
+#### _With prefix_
 
-```javascript
+```js
 import { generateActions } from "reduxt";
 
 const [actionsAT, actionsAC] = generateActions(
@@ -81,38 +94,42 @@ const [actionsAT, actionsAC] = generateActions(
   ["action 3", value => !value]
 );
 
-/*
-     actionsAT.action1 === CUSTOM_PREFIX/ACTION_1
-     actionsAT.action2 === CUSTOM_PREFIX/ACTION_2
-     actionsAT.action3 === CUSTOM_PREFIX/ACTION_3
-    
-        actionsAC.action1() === {
-            type    : 'CUSTOM_PREFIX/ACTION_1',
-            payload : undefined,
-        }
+actionsAT.action1 --> 'CUSTOM_PREFIX/ACTION_1'
+actionsAT.action2 --> 'CUSTOM_PREFIX/ACTION_2'
+actionsAT.action3 --> 'CUSTOM_PREFIX/ACTION_3'
 
-        actionsAC.action2('Hello!') === {
-            type    : 'CUSTOM_PREFIX/ACTION_2',
-            payload : 'Hello!',
-        }
+actionsAC.action1() --> {
+    type    : 'CUSTOM_PREFIX/ACTION_1',
+    payload : undefined,
+}
 
-        actionsAC.action3(false) === {
-            type    : 'CUSTOM_PREFIX/ACTION_3',
-            payload : true,
-        }
-    */
+actionsAC.action2('Hello!') --> {
+  type    : 'CUSTOM_PREFIX/ACTION_2',
+  payload : 'Hello!',
+}
+
+actionsAC.action3(false) --> {
+    type    : 'CUSTOM_PREFIX/ACTION_3',
+    payload : true,
+}
+```
+___
+
+### **Generate reducer**
+
+```js
+generateReducer(initialState, ...reducers);
 ```
 
-- ### Generate reducer
-
-```javascript
-// generateReducer(initialState, ...reducers);
+```js
 import { generateReducer } from "reduxt";
 
 const initialState = {
   test: true,
   foo: "foo"
 };
+
+// Reducers
 
 const changeTestValueReducer = (state, { payload }) => ({
   ...state,
@@ -132,23 +149,23 @@ const reducer = generateReducer(initialState, {
   CHANGE_FOO_VALUE: changeFooValue
 });
 
-I; /*
-    dispatch(actionsAC.changeTestValue(false));
-    state = {
-        test : false,
-        foo  : 'foo',
-    };
+// Examples
 
-    dispatch(actionsAC.toggleTestValue());
-    state = {
-        test : true,
-        foo  : 'foo',
-    }
+dispatch(actionsAC.changeTestValue(false));
+state --> {
+    test : false,
+    foo  : 'foo',
+};
 
-    dispatch(actionsAC.changeFooValue('Modified'));
-    state = {
-        test : true,
-        foo  : 'Modified',
-    }
-*/
+dispatch(actionsAC.toggleTestValue());
+state --> {
+    test : true,
+    foo  : 'foo',
+}
+
+dispatch(actionsAC.changeFooValue('Modified'));
+state --> {
+    test : true,
+    foo  : 'Modified',
+}
 ```
