@@ -1,10 +1,10 @@
 {
   "name": "reduxt",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Tools for redux",
   "main": "dist/lib.js",
   "module": "dist/lib.es.js",
-  "type": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "author": "Roberto Ríos <roberto.rios.perea@outlook.com>",
   "license": "MIT",
   "keywords": [
