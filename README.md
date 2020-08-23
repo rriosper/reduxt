@@ -1,3 +1,5 @@
+**This project is deprecated, you may use [hactions](https://github.com/rriosper/hactions) instead of this**
+
 # Reduxt - Redux toolbox
 
 _Tools to ease generate actions and reducers for redux_
